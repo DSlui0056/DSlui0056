@@ -21,6 +21,7 @@ body {
 
   a:active {
     background-color: yellow;
+    color: yellow;
   }
   
   nav a:hover {
