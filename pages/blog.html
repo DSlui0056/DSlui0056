@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body>
-    <header>
-      <h1>Blog</h1>
+   
       <nav>
-        <a href="../index.html">Home</a>
-        <a href="profile.html">Profiel</a>
-        <a href="blog.html">Blog</a>
-        <a href="faq.html">FAQ</a>
-        <a href="dashboard.html">Dashboard</a>
+        <div class="topnav">
+          <a href="../index.html">Home</a>
+          <a href="profile.html">Profiel</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="FAQ.html">FAQ</a>
+          <a class="active" href="blog.html">Blog</a>
+        </div>
       </nav>
-    </header>
+  
 
     <div class="container">
       <section id="blog-posts">
         <h2>Blog Posts</h2>
         <article>
-          <h3>Hoe ik begon met programmeren</h3>
-          <p>Het was een uitdagende maar belonende reis...</p>
-          <a href="../blogposts/post1.html">Lees meer</a>
+          <h3>Mijn Verkenning van Data Science: Drie Inspirerende Bedrijven</h3>
+          <p>Als je geïnteresseerd bent in data science en...</p>
+          <a href="../blogposts/datascience.html">Lees meer</a>
         </article>
         <article>
           <h3>Mijn ervaringen met HTML en CSS</h3>
@@ -36,7 +37,20 @@
     </div>
 
     <footer>
-    <p>&copy; 2024 Damian Portfolio.</p>
-    </footer>
+      <div class="footer-container">
+          <div class="footer-links">
+              <ul>
+                  <li><a href="https://learn.hz.nl" target="_blank">Learn Environment</a></li>
+                  <li><a href="https://myhz.hz.nl" target="_blank">MyHZ Study Progress</a></li>
+                  <li><a href="https://github.com/HZ-HBO-ICT" target="_blank">GitHub Environment</a></li>
+              </ul>
+          </div>
+          <p>&copy; 2024 Damian Portfolio.</p>
+          <div class="footer-logo">
+              <img src="../images/hzlogo.png" alt="HZ Logo">
+          </div>
+      </div>
+  </footer>
+
   </body>
 </html>

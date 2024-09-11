@@ -8,27 +8,40 @@
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
-    <header>
-      <h1>Portfolio</h1>
-      <nav>
-        <a href="index.html">Home</a>
+    <nav>
+      <div class="topnav">
+        <a class="active" href="index.html">Home</a>
         <a href="pages/profile.html">Profiel</a>
-        <a href="pages/blog.html">Blog</a>
-        <a href="pages/faq.html">FAQ</a>
         <a href="pages/dashboard.html">Dashboard</a>
-      </nav>
-    </header>
+        <a href="pages/FAQ.html">FAQ</a>
+        <a href="pages/blog.html">Blog</a>
+      </div>
+    </nav>
 
-    <div class="container">
-      <section id="about">
-        <h2>Wie ben ik</h2>
+    <!-- Hero Section met achtergrondafbeelding en witte container voor de tekst -->
+    <div class="hero">
+      <div class="container">
+        <h1>Welkom op mijn Portfolio</h1>
         <p>Ik ben Damian, een ontwikkelaar met ervaring in het bouwen van dynamische en interactieve webapplicaties.</p>
-        <p>Klik <a href="pages/profile.html">hier</a> om meer te leren over mijn programmeerervaring.</p>
-      </section>
+        <p><a href="pages/profile.html" class="btn">Leer meer over mij</a></p>
+      </div>
     </div>
 
     <footer>
-      <p>&copy; 2024 Damian Portfolio.</p>
-    </footer>
+      <div class="footer-container">
+          <div class="footer-links">
+              <ul>
+                  <li><a href="https://learn.hz.nl" target="_blank">Learn Environment</a></li>
+                  <li><a href="https://myhz.hz.nl" target="_blank">MyHZ Study Progress</a></li>
+                  <li><a href="https://github.com/HZ-HBO-ICT" target="_blank">GitHub Environment</a></li>
+              </ul>
+          </div>
+          <p>&copy; 2024 Damian Portfolio.</p>
+          <div class="footer-logo">
+              <img src="../images/hzlogo.png" alt="HZ Logo">
+          </div>
+      </div>
+  </footer>
+  
   </body>
 </html>
