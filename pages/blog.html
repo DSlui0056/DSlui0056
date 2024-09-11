@@ -8,49 +8,57 @@
     <link rel="stylesheet" href="../css/styles.css">
   </head>
   <body>
-   
-      <nav>
-        <div class="topnav">
-          <a href="../index.html">Home</a>
-          <a href="profile.html">Profiel</a>
-          <a href="dashboard.html">Dashboard</a>
-          <a href="FAQ.html">FAQ</a>
-          <a class="active" href="blog.html">Blog</a>
-        </div>
-      </nav>
-  
+    <nav>
+      <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="profile.html">Profiel</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="FAQ.html">FAQ</a>
+        <a class="active" href="blog.html">Blog</a>
+      </div>
+    </nav>
 
-    <div class="container">
+    <div class="container-blog">
       <section id="blog-posts">
-        <h2>Blog Posts</h2>
-        <article>
-          <h3>Mijn Verkenning van Data Science: Drie Inspirerende Bedrijven</h3>
-          <p>Als je geïnteresseerd bent in data science en...</p>
-          <a href="../blogposts/datascience.html">Lees meer</a>
+        <h2>Mijn Blog Posts</h2>
+
+        <!-- Eerste blogpost -->
+        <article class="blog-item">
+          <img src="../images/datascience.jpg" alt="Data Science afbeelding">
+          <div class="blog-content">
+            <h3>Mijn Verkenning van Data Science: Drie Inspirerende Bedrijven</h3>
+            <p>Als je geïnteresseerd bent in data science en de toepassingen ervan in de echte wereld, dan zul je genieten van mijn ontdekkingstocht langs drie bedrijven die deze technologie beheersen...</p>
+            <a href="../blogposts/datascience.html" class="btn">Lees meer</a>
+          </div>
         </article>
-        <article>
-          <h3>Mijn ervaringen met HTML en CSS</h3>
-          <p>Deze twee talen zijn de basis van elke webpagina...</p>
-          <a href="../blogposts/post2.html">Lees meer</a>
+
+        <!-- Tweede blogpost -->
+        <article class="blog-item">
+          <img src="../images/code.jpg" alt="HTML en CSS afbeelding">
+          <div class="blog-content">
+            <h3>Mijn ervaringen met HTML en CSS</h3>
+            <p>HTML en CSS zijn de basis van elke webpagina, maar het proces om ze echt onder de knie te krijgen is uitdagend. In deze post deel ik mijn ervaringen en tips om de eerste stappen te zetten...</p>
+            <a href="../blogposts/post2.html" class="btn">Lees meer</a>
+          </div>
         </article>
+
       </section>
     </div>
 
     <footer>
       <div class="footer-container">
-          <div class="footer-links">
-              <ul>
-                  <li><a href="https://learn.hz.nl" target="_blank">Learn Environment</a></li>
-                  <li><a href="https://myhz.hz.nl" target="_blank">MyHZ Study Progress</a></li>
-                  <li><a href="https://github.com/HZ-HBO-ICT" target="_blank">GitHub Environment</a></li>
-              </ul>
-          </div>
-          <p>&copy; 2024 Damian Portfolio.</p>
-          <div class="footer-logo">
-              <img src="../images/hzlogo.png" alt="HZ Logo">
-          </div>
+        <div class="footer-links">
+          <ul>
+            <li><a href="https://learn.hz.nl" target="_blank">Learn Environment</a></li>
+            <li><a href="https://myhz.hz.nl" target="_blank">MyHZ Study Progress</a></li>
+            <li><a href="https://github.com/HZ-HBO-ICT" target="_blank">GitHub Environment</a></li>
+          </ul>
+        </div>
+        <p>&copy; 2024 Damian Portfolio.</p>
+        <div class="footer-logo">
+          <img src="../images/hzlogo.png" alt="HZ Logo">
+        </div>
       </div>
-  </footer>
-
+    </footer>
   </body>
 </html>

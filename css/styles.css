@@ -4,7 +4,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #e9e9e9ea;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -26,7 +26,7 @@ a:hover {
 /* Menubalk */
 
 .topnav {
-  position: fixed;
+  position: fixed; /* Vastzittende header */
   top: 0;
   left: 0;
   width: 100%;
@@ -69,10 +69,6 @@ a:hover {
   margin-bottom: 100px;
 }
 
-
-
-
-
 /* FAQ pagina */
 
 .container-faq {
@@ -84,7 +80,6 @@ a:hover {
   margin-top: 100px;
   margin-bottom: 34px;
 }
-
 
 .faq-search-container {
   display: flex;
@@ -114,7 +109,6 @@ a:hover {
   background-color: #4a90d0;
 }
 
-
 .cta-section {
   text-align: center;
   background-color: #5faafa;
@@ -123,6 +117,7 @@ a:hover {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 100px;
+  margin: 30px;
 }
 
 .cta-section h3 {
@@ -137,6 +132,8 @@ a:hover {
   text-decoration: none;
   border-radius: 8px;
   font-size: 1.2em;
+  display: inline-block;
+  margin-top: 30px;
 }
 
 .cta-section a:hover {
@@ -144,14 +141,9 @@ a:hover {
   color: white;
 }
 
-
 #faq-list ul {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
-
-
-
-
 
 /* Profiel afbeelding en tekst */
 
@@ -166,19 +158,18 @@ a:hover {
 }
 
 .text-section p {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
-
 
 .text-section .btn {
   background-color: #5faafa;
   color: white;
-  padding: 15px 30px; 
+  padding: 15px 30px;
   text-decoration: none;
   border-radius: 8px;
   font-size: 1.3em;
   display: inline-block;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .profile-image {
@@ -199,7 +190,6 @@ a:hover {
   align-items: center;
   justify-content: center;
   padding: 60px;
- 
 }
 
 .hero .container {
@@ -228,7 +218,7 @@ a:hover {
 .btn {
   background-color: #5faafa;
   color: white;
-  padding: 15px 30px; 
+  padding: 15px 30px;
   text-decoration: none;
   border-radius: 8px;
   font-size: 1.3em;
@@ -239,7 +229,83 @@ a:hover {
   background-color: #4a90d0;
 }
 
+/* Blog pagina */
+
+.container-blog {
+  margin: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+  margin-bottom: 80px;
+}
+
+#blog-posts h2 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.blog-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease; /* Hover effect toegevoegd */
+}
+
+.blog-item:hover {
+  transform: scale(1.02); /* Hover effect vergroting */
+}
+
+.blog-item img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-right: 20px;
+  transition: opacity 0.3s ease; /* Hover effect afbeelding */
+}
+
+.blog-item:hover img {
+  opacity: 0.9; /* Hover effect afbeelding transparantie */
+}
+
+.blog-content {
+  flex: 1;
+}
+
+.blog-content h3 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.blog-content p {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.blog-content .btn {
+  background-color: #5faafa;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.blog-content .btn:hover {
+  background-color: #4a90d0;
+}
+
 /* Footer */
+
 footer {
   background-color: #5c5b5b;
   color: white;
@@ -254,19 +320,17 @@ footer {
   max-width: 1200px;
   margin: 0 auto;
   width: 90%;
-  position: relative; 
+  position: relative;
 }
 
 .footer-links {
   text-align: left;
   font-size: 0.9em;
-
 }
 
 .footer-links ul {
   list-style-type: none;
   padding: 0;
-  
 }
 
 .footer-links ul li {
@@ -286,30 +350,27 @@ footer p {
   font-size: 1em;
   text-align: center;
   position: relative;
-
 }
 
 .footer-logo img {
-  width: 180px; 
+  width: 180px;
   height: auto;
-
 }
 
 @media (max-width: 768px) {
   .footer-container {
-      flex-direction: column;
-      text-align: center;
+    flex-direction: column;
+    text-align: center;
   }
 
   .footer-links {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 
   .footer-logo {
-      margin-top: 20px;
+    margin-top: 20px;
   }
 }
-
 
 /* Tabel / Dashboard pagina */
 
@@ -331,4 +392,112 @@ table th {
 
 #nbsa {
   margin-bottom: 30px;
+}
+
+/* Responsive aanpassingen */
+
+@media (max-width: 1024px) {
+  .faq-search-container input[type="text"] {
+    width: 80%;
+  }
+
+  .container,
+  .container-faq,
+  .container-blog,
+  .hero .container {
+    margin: 20px;
+    padding: 15px;
+  }
+
+  .hero h1 {
+    font-size: 2.5em;
+  }
+
+  .hero p {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-search-container input[type="text"] {
+    width: 90%;
+  }
+
+  .faq-search-container {
+    flex-direction: column;
+  }
+
+  .faq-search-container button {
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+  .content-with-image {
+    flex-direction: column;
+  }
+
+  .profile-image {
+    margin: 20px 0;
+    max-width: 100%;
+  }
+
+  .cta-section h3 {
+    font-size: 1.5em;
+  }
+
+  .cta-section a {
+    font-size: 1.1em;
+  }
+
+  .blog-item {
+    flex-direction: column;
+  }
+
+  .blog-item img {
+    margin-bottom: 20px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-search-container input[type="text"] {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 2em;
+  }
+
+  .hero p {
+    font-size: 1.1em;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 1em;
+  }
+
+  .cta-section {
+    padding: 30px;
+  }
+
+  .cta-section h3 {
+    font-size: 1.3em;
+  }
+
+  .cta-section a {
+    padding: 10px 20px;
+  }
+
+  .blog-content h3 {
+    font-size: 1.5em;
+  }
+
+  .footer-logo img {
+    width: 150px;
+  }
 }
