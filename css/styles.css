@@ -172,6 +172,7 @@ a:hover {
   margin-top: 20px;
 }
 
+
 .profile-image {
   width: 100%;
   max-width: 300px;
@@ -180,7 +181,7 @@ a:hover {
   margin-right: 50px;
 }
 
-/* Hero sectie met achtergrondafbeelding */
+/* Homepagina hero sectie met achtergrondafbeelding */
 
 .hero {
   background-image: url('../images/achtergrond1.jpg');
@@ -189,7 +190,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px;
+  padding: 50px;
 }
 
 .hero .container {
@@ -227,7 +228,26 @@ a:hover {
 
 .btn:hover {
   background-color: #4a90d0;
+  text-decoration: none;
 }
+
+.scroll-down {
+  display: block;
+  margin-top: 20px;
+  font-size: 4em; 
+  color: #5faafa; 
+  text-align: center;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.scroll-down:hover {
+  color: #4a90d0; 
+  cursor: pointer;
+}
+
+
+
 
 /* Blog pagina */
 
@@ -256,11 +276,11 @@ a:hover {
   border-radius: 8px;
   background-color: #f4f4f4;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease; /* Hover effect toegevoegd */
+  transition: transform 0.3s ease; 
 }
 
 .blog-item:hover {
-  transform: scale(1.02); /* Hover effect vergroting */
+  transform: scale(1.02); 
 }
 
 .blog-item img {
@@ -268,11 +288,11 @@ a:hover {
   height: auto;
   border-radius: 8px;
   margin-right: 20px;
-  transition: opacity 0.3s ease; /* Hover effect afbeelding */
+  transition: opacity 0.3s ease; 
 }
 
 .blog-item:hover img {
-  opacity: 0.9; /* Hover effect afbeelding transparantie */
+  opacity: 0.9; 
 }
 
 .blog-content {
@@ -357,20 +377,7 @@ footer p {
   height: auto;
 }
 
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .footer-links {
-    margin-bottom: 20px;
-  }
-
-  .footer-logo {
-    margin-top: 20px;
-  }
-}
 
 /* Tabel / Dashboard pagina */
 
@@ -394,7 +401,7 @@ table th {
   margin-bottom: 30px;
 }
 
-/* Responsive aanpassingen */
+/* Responsive */
 
 @media (max-width: 1024px) {
   .faq-search-container input[type="text"] {
@@ -462,6 +469,23 @@ table th {
     text-align: center;
   }
 }
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-links {
+    margin-bottom: 20px;
+  }
+
+  .footer-logo {
+    margin-top: 20px;
+  }
+}
+
 
 @media (max-width: 480px) {
   .faq-search-container input[type="text"] {
