@@ -1,7 +1,7 @@
 /* Algemene stijlen */
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #e9e9e9ea;
@@ -26,7 +26,7 @@ a:hover {
 /* Menubalk */
 
 .topnav {
-  position: fixed; /* Vastzittende header */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -56,6 +56,7 @@ a:hover {
   color: white;
 }
 
+
 /* Container */
 
 .container {
@@ -68,6 +69,7 @@ a:hover {
   margin-top: 100px;
   margin-bottom: 100px;
 }
+
 
 /* FAQ pagina */
 
