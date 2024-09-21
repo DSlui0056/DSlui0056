@@ -1,0 +1,81 @@
+/* FAQ pagina */
+
+.container-faq {
+  margin: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 100px;
+  margin-bottom: 34px;
+}
+
+.faq-search-container {
+  display: flex;
+  justify-content: center; 
+  margin-bottom: 20px; 
+}
+
+.faq-search-container input[type="text"] {
+  width: 60%;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.faq-search-container button {
+  padding: 10px 20px; 
+  margin-left: 10px;
+  background-color: #5faafa;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.faq-search-container button:hover {
+  background-color: #4a90d0;
+}
+
+.cta-section {
+  text-align: center;
+  background-color: #5faafa;
+  color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 100px;
+  margin: 30px;
+}
+
+.cta-section h3 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.cta-section a {
+  background-color: white;
+  color: #5faafa;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.2em;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.cta-section a:hover {
+  background-color: #4a90d0;
+  color: white;
+}
+
+#faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+#faq-list h2 {
+  margin-top: 0; 
+  margin-bottom: 20px; 
+}

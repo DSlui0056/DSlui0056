@@ -1,0 +1,49 @@
+/* Profiel afbeelding en tekst */
+
+.content-with-image {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .text-section {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .text-section p {
+    margin-bottom: 20px;
+  }
+  
+  .text-section .btn {
+    background-color: #5faafa;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.3em;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  
+  #profile-experience .profile-image {
+    width: 400px; 
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+    transition: opacity 0.3s ease, transform 0.3s ease; 
+  }
+  
+  #profile-experience .profile-image:hover {
+    opacity: 0.9; 
+    transform: scale(1.15); 
+  }
+  
+  .profile-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-left: 30px;
+    margin-right: 50px;
+  }
+  
