@@ -1,21 +1,84 @@
 /* Tabel / Dashboard pagina */
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-  }
-  
-  table th, table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  table th {
-    background-color: #f4f4f4;
-  }
-  
-  #nbsa {
-    margin-bottom: 30px;
-  }
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+table th,
+table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f4f4f4;
+}
+
+#nbsa {
+  margin-bottom: 30px;
+}
+
+.grade-sufficient {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.grade-insufficient {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.grade-incomplete {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+/* popup formulier */
+.popup {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgb(0,0,0); 
+  background-color: rgba(0,0,0,0.4); 
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.popup h2 {
+  margin-bottom: 20px; 
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 98%; 
+  padding: 10px; 
+  margin: 8px 0; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #007BFF; 
+  outline: none; 
+}
+
+.close {
+  cursor: pointer; 
+}

@@ -1,219 +1,258 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <script src="../js/studypoints.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <script src="../js/studypoints.js" defer></script>
 </head>
+
 <body>
-    <main>
+  <main>
     <nav>
-        <div class="topnav">
-            <a href="../index.html">Home</a>
-            <a href="profile.html">Profiel</a>
-            <a class="active" href="dashboard.html">Dashboard</a>
-            <a href="FAQ.html">FAQ</a>
-            <a href="blog.html">Blog</a>
-        </div>
+      <div class="topnav">
+        <a href="../index.html">Home</a>
+        <a href="profile.html">Profiel</a>
+        <a class="active" href="dashboard.html">Dashboard</a>
+        <a href="faq.html">FAQ</a>
+        <a href="blog.html">Blog</a>
+      </div>
     </nav>
 
     <div class="container">
-        <section id="courses">
-            <h2>Studievoortgang</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Quarter</th>
-                        <th>Course</th>
-                        <th>Exams</th>
-                        <th>Grade</th>
-                        <th>EC</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Block 1 / S1 -->
-                    <tr>
-                        <td>Block 1 / S1</td>
-                        <td>Program- & Career Orientation</td>
-                        <td>Individual process assessment</td>
-                        <td>7.0</td>
-                        <td>2,5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 1 / S1</td>
-                        <td>Computer Science Basics (CU75002V2)</td>
-                        <td>Tentamen</td>
-                        <td>6.3</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 1 / S1</td>
-                        <td>Programming Basics (CU75003V1)</td>
-                        <td>Case test (written knowledge test)</td>
-                        <td>6.5</td>
-                        <td>5</td>
-                    </tr>
-                
-                    <!-- Block 2 / S1 -->
-                    <tr>
-                        <td>Block 2 / S1</td>
-                        <td>Object-Oriented Programming (CU75003V1)</td>
-                        <td>Presentation (individual)</td>
-                        <td>8.0</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 2 / S1</td>
-                        <td>Object-Oriented Programming (CU75003V1)</td>
-                        <td>Written knowledge test</td>
-                        <td>6.0</td>
-                        <td>5</td>
-                    </tr>
-                
-                    <!-- Block 1 / S2 -->
-                    <tr>
-                        <td>Block 1 / S2</td>
-                        <td>Framework project 1 (CU75080V1)</td>
-                        <td>Written knowledge test, On-site case study exam</td>
-                        <td>7.5</td>
-                        <td>2,5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 1 / S2</td>
-                        <td>Framework project 1 (CU75080V1)</td>
-                        <td>Database exam</td>
-                        <td>8.4</td>
-                        <td>2,5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 1 / S2</td>
-                        <td>Framework project 1 (CU75080V1)</td>
-                        <td>Assignment (group)</td>
-                        <td>6.1</td>
-                        <td>2,5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 1 / S2</td>
-                        <td>Framework project 1 (CU75080V1)</td>
-                        <td>Assignment (individual)</td>
-                        <td>6.8</td>
-                        <td>2,5</td>
-                    </tr>
-                
-                    <!-- Block 2 / S2 -->
-                    <tr>
-                        <td>Block 2 / S2</td>
-                        <td>Framework project 2 (CU75011V3)</td>
-                        <td>Portfolio, Final delivery</td>
-                        <td>6.0</td>
-                        <td>2,5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 2 / S2</td>
-                        <td>Framework project 2 (CU75011V3)</td>
-                        <td>Portfolio</td>
-                        <td>6.6</td>
-                        <td>2,5</td>
-                    </tr>
-                    <tr>
-                        <td>Block 2 / S2</td>
-                        <td>Framework project 2 (CU75011V3)</td>
-                        <td>Portfolio, IT Development</td>
-                        <td>6.0</td>
-                        <td>5</td>
-                    </tr>
-                
-                    <!-- Block 1 & 2 / S2 -->
-                    <tr>
-                        <td>Block 1 & 2 / S2</td>
-                        <td>Business IT Consultancy basics (CU75081V1)</td>
-                        <td>Assignment (individual)</td>
-                        <td>8.8</td>
-                        <td>2,5</td>
-                    </tr>
-                
-                    <!-- Block 1 & 2 / S1 & S2 -->
-                    <tr>
-                        <td>Block 1 & 2 / S1 & S2</td>
-                        <td>Personal Professional Development Exploration (CU75068V3)</td>
-                        <td>Criterion-referenced assessment</td>
-                        <td>9.7</td>
-                        <td>12,5</td>
-                    </tr>
-                
-                    <!-- IT Personality- projectweek 1 -->
-                    <tr>
-                        <td>IT Personality- projectweek 1</td>
-                        <td>IT Personality- projectweek 1 (CU75054V1)</td>
-                        <td>Portfolio</td>
-                        <td>8.9</td>
-                        <td>1,25</td>
-                    </tr>
-                
-                    <!-- IT Personality International week -->
-                    <tr>
-                        <td>IT Personality International week</td>
-                        <td>IT Personality International week (CU75055V1)</td>
-                        <td>Portfolio</td>
-                        <td>9.4</td>
-                        <td>1,25</td>
-                    </tr>
-                
-                    <!-- IT Personality 1 -->
-                    <tr>
-                        <td>IT Personality 1</td>
-                        <td>IT Personality 1 (CU75056V1)</td>
-                        <td>Portfolio</td>
-                        <td>6.0</td>
-                        <td>1,25</td>
-                    </tr>
-                
-                    <!-- IT Personality 2 -->
-                    <tr>
-                        <td>IT Personality 2</td>
-                        <td>IT Personality 2 (CU75057V1)</td>
-                        <td>Portfolio</td>
-                        <td>9.0</td>
-                        <td>1,25</td>
-                    </tr>
-                </tbody>
-                
-            </table>
-        </section>
+      <section id="courses">
+        <h2>Studievoortgang</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Quarter</th>
+              <th>Course</th>
+              <th>Exams</th>
+              <th>Grade</th>
+              <th>EC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Block 1 / S1 -->
+            <tr>
+              <td>Block 1 / S1</td>
+              <td>Program- & Career Orientation</td>
+              <td>Individual process assessment</td>
+              <td>7.0</td>
+              <td>2,5</td>
+            </tr>
+            <tr>
+              <td>Block 1 / S1</td>
+              <td>Computer Science Basics (CU75002V2)</td>
+              <td>Tentamen</td>
+              <td>6.3</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Block 1 / S1</td>
+              <td>Programming Basics (CU75003V1)</td>
+              <td>Case test (written knowledge test)</td>
+              <td>6.5</td>
+              <td>5</td>
+            </tr>
 
-        <section id="nbsa">
-            <h2>NBSA Overzicht</h2>
-            <p>Houd je voortgang bij om te zien of je op schema ligt om voldoende EC te halen.</p>
-            <p><strong>NBSA Grens:</strong> 45 EC</p>
-            
-            <!-- Voortgangsbalk -->
-            <progress id="ecProgressBar" value="0" max="60"></progress>
-            <p>Behaalde EC's: <span id="ecCount">0</span>/60</p>
+            <!-- Block 2 / S1 -->
+            <tr>
+              <td>Block 2 / S1</td>
+              <td>Object-Oriented Programming (CU75003V1)</td>
+              <td>Presentation (individual)</td>
+              <td>8.0</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Block 2 / S1</td>
+              <td>Object-Oriented Programming (CU75003V1)</td>
+              <td>Written knowledge test</td>
+              <td>6.0</td>
+              <td>5</td>
+            </tr>
 
-        </section>
+            <!-- Block 1 / S2 -->
+            <tr>
+              <td>Block 1 / S2</td>
+              <td>Framework project 1 (CU75080V1)</td>
+              <td>Written knowledge test, On-site case study exam</td>
+              <td>7.5</td>
+              <td>2,5</td>
+            </tr>
+            <tr>
+              <td>Block 1 / S2</td>
+              <td>Framework project 1 (CU75080V1)</td>
+              <td>Database exam</td>
+              <td>8.4</td>
+              <td>2,5</td>
+            </tr>
+            <tr>
+              <td>Block 1 / S2</td>
+              <td>Framework project 1 (CU75080V1)</td>
+              <td>Assignment (group)</td>
+              <td>6.1</td>
+              <td>2,5</td>
+            </tr>
+            <tr>
+              <td>Block 1 / S2</td>
+              <td>Framework project 1 (CU75080V1)</td>
+              <td>Assignment (individual)</td>
+              <td>6.8</td>
+              <td>2,5</td>
+            </tr>
+
+            <!-- Block 2 / S2 -->
+            <tr>
+              <td>Block 2 / S2</td>
+              <td>Framework project 2 (CU75011V3)</td>
+              <td>Portfolio, Final delivery</td>
+              <td>6.0</td>
+              <td>2,5</td>
+            </tr>
+            <tr>
+              <td>Block 2 / S2</td>
+              <td>Framework project 2 (CU75011V3)</td>
+              <td>Portfolio</td>
+              <td>6.6</td>
+              <td>2,5</td>
+            </tr>
+            <tr>
+              <td>Block 2 / S2</td>
+              <td>Framework project 2 (CU75011V3)</td>
+              <td>Portfolio, IT Development</td>
+              <td>6.0</td>
+              <td>5</td>
+            </tr>
+
+            <!-- Block 1 & 2 / S2 -->
+            <tr>
+              <td>Block 1 & 2 / S2</td>
+              <td>Business IT Consultancy basics (CU75081V1)</td>
+              <td>Assignment (individual)</td>
+              <td>8.8</td>
+              <td>2,5</td>
+            </tr>
+
+            <!-- Block 1 & 2 / S1 & S2 -->
+            <tr>
+              <td>Block 1 & 2 / S1 & S2</td>
+              <td>Personal Professional Development Exploration (CU75068V3)</td>
+              <td>Criterion-referenced assessment</td>
+              <td>9.7</td>
+              <td>12,5</td>
+            </tr>
+
+            <!-- IT Personality- projectweek 1 -->
+            <tr>
+              <td>IT Personality- projectweek 1</td>
+              <td>IT Personality- projectweek 1 (CU75054V1)</td>
+              <td>Portfolio</td>
+              <td>8.9</td>
+              <td>1,25</td>
+            </tr>
+
+            <!-- IT Personality International week -->
+            <tr>
+              <td>IT Personality International week</td>
+              <td>IT Personality International week (CU75055V1)</td>
+              <td>Portfolio</td>
+              <td>9.4</td>
+              <td>1,25</td>
+            </tr>
+
+            <!-- IT Personality 1 -->
+            <tr>
+              <td>IT Personality 1</td>
+              <td>IT Personality 1 (CU75056V1)</td>
+              <td>Portfolio</td>
+              <td>6.0</td>
+              <td>1,25</td>
+            </tr>
+
+            <!-- IT Personality 2 -->
+            <tr>
+              <td>IT Personality 2</td>
+              <td>IT Personality 2 (CU75057V1)</td>
+              <td>Portfolio</td>
+              <td>9.0</td>
+              <td>1,25</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </section>
+
+      <section id="nbsa">
+        <h2>NBSA Overzicht</h2>
+        <p>Houd je voortgang bij om te zien of je op schema ligt om voldoende EC te halen.</p>
+        <p><strong>NBSA Grens:</strong> 45 EC</p>
+
+        <!-- Voortgangsbalk -->
+        <progress id="ecProgressBar" value="0" max="60"></progress>
+        <p>Behaalde EC's: <span id="ecCount">0</span>/60</p>
+
+        <!-- Voeg een waarschuwing toe als de grens niet is gehaald -->
+        <p id="nbsaWarning" style="display: none; color: red;">Waarschuwing: Je ligt onder de NBSA-grens van 45 EC.</p>
+        
+        <!-- Course toevoegen formulier -->
+        <button id="addCourseButton" class="btn">Voeg Course Toe</button>
+
+        <div id="coursePopup" class="popup" style="display: none;">
+          <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Voeg een nieuwe course toe</h2>
+            <form id="addCourseForm">
+              <label for="courseQuarter">Quarter:</label>
+              <input type="text" id="courseQuarter" name="courseQuarter" required>
+
+              <label for="courseName">Course Name:</label>
+              <input type="text" id="courseName" name="courseName" required>
+
+              <label for="courseExams">Exams:</label>
+              <input type="text" id="courseExams" name="courseExams" required>
+
+              <label for="courseGrade">Grade:</label>
+              <input type="number" id="courseGrade" name="courseGrade" step="0.1" required>
+
+              <label for="courseEC">EC:</label>
+              <input type="number" id="courseEC" name="courseEC" step="0.1" required>
+
+              <button type="submit" class="btn">Toevoegen</button>
+            </form>
+          </div>
+        </div>
+
+
+
+
+
+      </section>
     </div>
 
     <footer>
-        <div class="footer-container">
-            <div class="footer-links">
-                <ul>
-                    <li><a href="https://www.linkedin.com/in/damian-van-der-sluis/" target="_blank">Mijn LinkedIn</a></li>
-                    <li><a href="https://learn.hz.nl" target="_blank">Learn Environment</a></li>
-                    <li><a href="https://portal.hz.nl/" target="_blank">MyHZ Portal</a></li>
-                    <li><a href="https://github.com/HZ-HBO-ICT" target="_blank">GitHub Environment</a></li>
-                    <li><a href="https://apps.hz.nl/rooster/Default.aspx?menu=110239084080170187101166073161084015193018067002" target="_blank">HZ Rooster</a></li>
-                </ul>
-            </div>
-            <p>&copy; 2024 Damian Portfolio.</p>
-            <div class="footer-logo">
-                <img src="../images/hzlogo.png" alt="HZ Logo">
-            </div>
+      <div class="footer-container">
+        <div class="footer-links">
+          <ul>
+            <li><a href="https://www.linkedin.com/in/damian-van-der-sluis/" target="_blank">Mijn LinkedIn</a></li>
+            <li><a href="https://learn.hz.nl" target="_blank">Learn Environment</a></li>
+            <li><a href="https://portal.hz.nl/" target="_blank">MyHZ Portal</a></li>
+            <li><a href="https://github.com/HZ-HBO-ICT" target="_blank">GitHub Environment</a></li>
+            <li><a href="https://apps.hz.nl/rooster/Default.aspx?menu=110239084080170187101166073161084015193018067002"
+                target="_blank">HZ Rooster</a></li>
+          </ul>
         </div>
-      </footer>
-    </main>
+        <p>&copy; 2024 Damian Portfolio.</p>
+        <div class="footer-logo">
+          <img src="../images/hzlogo.png" alt="HZ Logo">
+        </div>
+      </div>
+    </footer>
+  </main>
 </body>
+
 </html>

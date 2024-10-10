@@ -14,14 +14,6 @@ h1, h2, h3 {
   color: #333; 
 }
 
-a {
-  color: #5faafa;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
 
 
 /* Menubalk */
@@ -121,9 +113,29 @@ footer p {
 }
 
 .footer-logo img {
-  width: 180px;
+  width: 60px;
   height: auto;
 }
+
+/* Buttons*/
+
+.btn {
+  background-color: #5faafa;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.3em;
+  margin-top: 20px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #4a90d0;
+  text-decoration: none;
+}
+
+
 
 
 /* Responsive */
