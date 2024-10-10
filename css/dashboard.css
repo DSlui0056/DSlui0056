@@ -82,3 +82,37 @@ input[type="number"]:focus {
 .close {
   cursor: pointer; 
 }
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.delete-btn:hover {
+  color: darkred;
+}
+
+
+.delete-btn i {
+  font-size: 20px; 
+}
+
+
+.edit-btn {
+  background: none;
+  border: none;
+  color: #5faafa;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.edit-btn:hover {
+  color: #4a90d0;
+}
+
+.edit-btn i {
+  font-size: 20px; 
+}

@@ -1,12 +1,31 @@
 let ecTotal = 0;
 const maxEC = 60;
 const targetEC = 45;
+let currentRow = null;
 
 document.addEventListener('DOMContentLoaded', () => {
+  loadCoursesFromStorage();
   calculateECTotal();
   updateProgressBar();
   setupCourseForm();
 });
+
+function loadCoursesFromStorage() {
+  const courses = JSON.parse(localStorage.getItem('courses')) || [];
+  courses.forEach(course => {
+
+    if (!isCourseInTable(course.name)) {
+      const displayGrade = (course.grade !== null && !isNaN(course.grade)) ? course.grade : '';
+      const displayEC = (course.ec !== null && !isNaN(course.ec)) ? course.ec : '';
+      addNewCourseToTable(course.quarter, course.name, course.exams, displayGrade, displayEC);
+    }
+  });
+}
+
+function isCourseInTable(courseName) {
+  const tableRows = document.querySelectorAll('#courses tbody tr');
+  return Array.from(tableRows).some(row => row.cells[1].textContent === courseName);
+}
 
 function calculateECTotal() {
   const tableRows = document.querySelectorAll('#courses tbody tr');
@@ -27,11 +46,14 @@ function calculateECTotal() {
           if (grade >= 5.5) {
             ecTotal += ec;
             row.classList.add('grade-sufficient');
+            row.classList.remove('grade-insufficient', 'grade-incomplete');
           } else if (grade > 0 && grade < 5.5) {
             row.classList.add('grade-insufficient');
+            row.classList.remove('grade-sufficient', 'grade-incomplete');
           }
         } else {
           row.classList.add('grade-incomplete');
+          row.classList.remove('grade-sufficient', 'grade-insufficient');
         }
       }
     }
@@ -52,46 +74,70 @@ function updateProgressBar() {
 }
 
 function setupCourseForm() {
-  const form = document.getElementById('addCourseForm');
+  const addForm = document.getElementById('addCourseForm');
   const showFormBtn = document.getElementById('addCourseButton');
-  const popup = document.getElementById('coursePopup');
-  const closePopup = document.querySelector('.close');
+  const editPopup = document.getElementById('editCoursePopup');
+  const closeEditPopup = document.querySelector('.close-edit');
+  const submitButton = addForm.querySelector('button[type="submit"]');
+
 
   showFormBtn.addEventListener('click', () => {
+    const popup = document.getElementById('coursePopup');
     popup.style.display = 'block';
+    resetAddForm();
+    submitButton.textContent = 'Toevoegen';
   });
 
-  closePopup.addEventListener('click', () => {
-    popup.style.display = 'none';
+
+  closeEditPopup.addEventListener('click', () => {
+    editPopup.style.display = 'none';
   });
 
-  form.addEventListener('submit', (e) => {
+  addForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const courseQuarter = document.getElementById('courseQuarter').value;
-    const courseName = document.getElementById('courseName').value;
-    const courseExams = document.getElementById('courseExams').value;
-    const courseGrade = parseFloat(document.getElementById('courseGrade').value);
-    const courseEC = parseFloat(document.getElementById('courseEC').value);
-
+    const courseQuarter = document.getElementById('addCourseQuarter').value;
+    const courseName = document.getElementById('addCourseName').value;
+    const courseExams = document.getElementById('addCourseExams').value;
+    const courseGrade = parseFloat(document.getElementById('addCourseGrade').value);
+    const courseEC = parseFloat(document.getElementById('addCourseEC').value);
 
     if (courseGrade < 0 || courseEC < 0) {
       alert("Grade and EC must be non-negative values.");
       return;
     }
 
-    addNewCourseToTable(courseQuarter, courseName, courseExams, courseGrade, courseEC);
+    if (currentRow) {
+      updateCourseInTable(courseQuarter, courseName, courseExams, courseGrade, courseEC);
+      editPopup.style.display = 'none';
+    } else {
+      addNewCourseToTable(courseQuarter, courseName, courseExams, courseGrade, courseEC);
+    }
 
     calculateECTotal();
     updateProgressBar();
-
-    popup.style.display = 'none'; 
+    const popup = document.getElementById('coursePopup');
+    popup.style.display = 'none';
+    currentRow = null;
   });
 
-  window.addEventListener('click', (event) => {
-    if (event.target === popup) {
-      popup.style.display = 'none';
+  const editForm = document.getElementById('editCourseForm');
+  editForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const courseQuarter = document.getElementById('editCourseQuarter').value;
+    const courseName = document.getElementById('editCourseName').value;
+    const courseExams = document.getElementById('editCourseExams').value;
+    const courseGrade = parseFloat(document.getElementById('editCourseGrade').value);
+    const courseEC = parseFloat(document.getElementById('editCourseEC').value);
+
+    if (courseGrade < 0 || courseEC < 0) {
+      alert("Grade and EC must be non-negative values.");
+      return;
     }
+
+    updateCourseInTable(courseQuarter, courseName, courseExams, courseGrade, courseEC);
+    editPopup.style.display = 'none';
+    updateProgressBar();
   });
 }
 
@@ -99,13 +145,90 @@ function addNewCourseToTable(quarter, name, exams, grade, ec) {
   const tableBody = document.querySelector('#courses tbody');
   const newRow = document.createElement('tr');
 
+  const displayGrade = (grade !== null && !isNaN(grade)) ? grade : '';
+  const displayEC = (ec !== null && !isNaN(ec)) ? ec : '';
+
   newRow.innerHTML = `
     <td>${quarter}</td>
     <td>${name}</td>
     <td>${exams}</td>
-    <td>${grade}</td>
-    <td>${ec}</td>
+    <td>${displayGrade}</td>
+    <td>${displayEC}</td>
+    <td>
+      <button class="edit-btn">Bewerk</button>
+      <button class="delete-btn">Verwijder</button>
+    </td>
   `;
 
+  const deleteBtn = newRow.querySelector('.delete-btn');
+  deleteBtn.addEventListener('click', () => {
+    tableBody.removeChild(newRow);
+    removeCourseFromStorage(name);
+    calculateECTotal();
+  });
+
+  const editBtn = newRow.querySelector('.edit-btn');
+  editBtn.addEventListener('click', () => {
+    loadCourseForEditing(newRow);
+    const popup = document.getElementById('editCoursePopup');
+    popup.style.display = 'block';
+  });
+
   tableBody.appendChild(newRow);
+  saveCourseToStorage(quarter, name, exams, grade, ec);
+}
+
+function updateCourseInTable(quarter, name, exams, grade, ec) {
+  currentRow.cells[0].textContent = quarter;
+  currentRow.cells[1].textContent = name;
+  currentRow.cells[2].textContent = exams;
+
+  currentRow.cells[3].textContent = (grade !== null && !isNaN(grade)) ? grade : '';
+  currentRow.cells[4].textContent = (ec !== null && !isNaN(ec)) ? ec : '';
+
+  updateCourseInStorage(name, quarter, exams, grade, ec);
+}
+
+function saveCourseToStorage(quarter, name, exams, grade, ec) {
+  const courses = JSON.parse(localStorage.getItem('courses')) || [];
+  const existingIndex = courses.findIndex(course => course.name === name);
+  if (existingIndex === -1) {
+    courses.push({ quarter, name, exams, grade, ec });
+  } else {
+    courses[existingIndex] = { quarter, name, exams, grade, ec };
+  }
+  localStorage.setItem('courses', JSON.stringify(courses));
+}
+
+function removeCourseFromStorage(name) {
+  let courses = JSON.parse(localStorage.getItem('courses')) || [];
+  courses = courses.filter(course => course.name !== name);
+  localStorage.setItem('courses', JSON.stringify(courses));
+}
+
+
+function updateCourseInStorage(name, quarter, exams, grade, ec) {
+  let courses = JSON.parse(localStorage.getItem('courses')) || [];
+  const index = courses.findIndex(course => course.name === name);
+  if (index !== -1) {
+    courses[index] = { quarter, name, exams, grade, ec };
+    localStorage.setItem('courses', JSON.stringify(courses));
+  }
+}
+
+function loadCourseForEditing(row) {
+  currentRow = row;
+  document.getElementById('editCourseQuarter').value = row.cells[0].textContent;
+  document.getElementById('editCourseName').value = row.cells[1].textContent;
+  document.getElementById('editCourseExams').value = row.cells[2].textContent;
+  document.getElementById('editCourseGrade').value = row.cells[3].textContent || '';
+  document.getElementById('editCourseEC').value = row.cells[4].textContent || '';
+}
+
+function resetAddForm() {
+  document.getElementById('addCourseQuarter').value = '';
+  document.getElementById('addCourseName').value = '';
+  document.getElementById('addCourseExams').value = '';
+  document.getElementById('addCourseGrade').value = '';
+  document.getElementById('addCourseEC').value = '';
 }
