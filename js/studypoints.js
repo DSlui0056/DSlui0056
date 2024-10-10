@@ -28,8 +28,18 @@ function setupPopupClose() {
 
 function loadCoursesFromStorage() {
   const courses = JSON.parse(localStorage.getItem('courses')) || [];
-  courses.forEach(course => {
+  courses.sort((a, b) => {
+    const order = {
+      'Block 1 S1': 1,
+      'Block 2 S1': 2,
+      'Block 1 S2': 3,
+      'Block 2 S2': 4,
+    };
 
+    return (order[a.quarter] || Infinity) - (order[b.quarter] || Infinity);
+  });
+
+  courses.forEach(course => {
     if (!isCourseInTable(course.name)) {
       const displayGrade = (course.grade !== null && !isNaN(course.grade)) ? course.grade : '';
       const displayEC = (course.ec !== null && !isNaN(course.ec)) ? course.ec : '';
@@ -96,14 +106,12 @@ function setupCourseForm() {
   const closeEditPopup = document.querySelector('.close-edit');
   const submitButton = addForm.querySelector('button[type="submit"]');
 
-
   showFormBtn.addEventListener('click', () => {
     const popup = document.getElementById('coursePopup');
     popup.style.display = 'block';
     resetAddForm();
     submitButton.textContent = 'Toevoegen';
   });
-
 
   closeEditPopup.addEventListener('click', () => {
     editPopup.style.display = 'none';
@@ -165,16 +173,16 @@ function addNewCourseToTable(quarter, name, exams, grade, ec) {
   const displayEC = (ec !== null && !isNaN(ec)) ? ec : '';
 
   newRow.innerHTML = `
-    <td>${quarter}</td>
-    <td>${name}</td>
-    <td>${exams}</td>
-    <td>${displayGrade}</td>
-    <td>${displayEC}</td>
-    <td>
-      <button class="edit-btn">Bewerk</button>
-      <button class="delete-btn">Verwijder</button>
-    </td>
-  `;
+      <td>${quarter}</td>
+      <td>${name}</td>
+      <td>${exams}</td>
+      <td>${displayGrade}</td>
+      <td>${displayEC}</td>
+      <td>
+        <button class="edit-btn">Bewerk</button>
+        <button class="delete-btn">Verwijder</button>
+      </td>
+    `;
 
   const deleteBtn = newRow.querySelector('.delete-btn');
   deleteBtn.addEventListener('click', () => {
@@ -202,6 +210,22 @@ function updateCourseInTable(quarter, name, exams, grade, ec) {
   currentRow.cells[3].textContent = (grade !== null && !isNaN(grade)) ? grade : '';
   currentRow.cells[4].textContent = (ec !== null && !isNaN(ec)) ? ec : '';
 
+  if (!isNaN(grade)) {
+    if (grade >= 5.5) {
+      currentRow.classList.add('grade-sufficient');
+      currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
+    } else if (grade > 0 && grade < 5.5) {
+      currentRow.classList.add('grade-insufficient');
+      currentRow.classList.remove('grade-sufficient', 'grade-incomplete');
+    } else {
+      currentRow.classList.add('grade-incomplete');
+      currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
+    }
+  } else {
+    currentRow.classList.add('grade-incomplete');
+    currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
+  }
+
   updateCourseInStorage(name, quarter, exams, grade, ec);
 }
 
@@ -222,32 +246,13 @@ function removeCourseFromStorage(name) {
   localStorage.setItem('courses', JSON.stringify(courses));
 }
 
-
-function updateCourseInTable(quarter, name, exams, grade, ec) {
-  currentRow.cells[0].textContent = quarter;
-  currentRow.cells[1].textContent = name;
-  currentRow.cells[2].textContent = exams;
-
-  currentRow.cells[3].textContent = (grade !== null && !isNaN(grade)) ? grade : '';
-  currentRow.cells[4].textContent = (ec !== null && !isNaN(ec)) ? ec : '';
-
-  if (!isNaN(grade)) {
-    if (grade >= 5.5) {
-      currentRow.classList.add('grade-sufficient');
-      currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
-    } else if (grade > 0 && grade < 5.5) {
-      currentRow.classList.add('grade-insufficient');
-      currentRow.classList.remove('grade-sufficient', 'grade-incomplete');
-    } else {
-      currentRow.classList.add('grade-incomplete');
-      currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
-    }
-  } else {
-    currentRow.classList.add('grade-incomplete');
-    currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
+function updateCourseInStorage(name, quarter, exams, grade, ec) {
+  let courses = JSON.parse(localStorage.getItem('courses')) || [];
+  const index = courses.findIndex(course => course.name === name);
+  if (index !== -1) {
+    courses[index] = { quarter, name, exams, grade, ec };
+    localStorage.setItem('courses', JSON.stringify(courses));
   }
-
-  updateCourseInStorage(name, quarter, exams, grade, ec);
 }
 
 function loadCourseForEditing(row) {
