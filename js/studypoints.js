@@ -203,6 +203,9 @@ function addNewCourseToTable(quarter, name, exams, grade, ec) {
 }
 
 function updateCourseInTable(quarter, name, exams, grade, ec) {
+  const previousEC = parseFloat(currentRow.cells[4].textContent) || 0;
+  const wasSufficient = parseFloat(currentRow.cells[3].textContent) >= 5.5; 
+
   currentRow.cells[0].textContent = quarter;
   currentRow.cells[1].textContent = name;
   currentRow.cells[2].textContent = exams;
@@ -210,13 +213,22 @@ function updateCourseInTable(quarter, name, exams, grade, ec) {
   currentRow.cells[3].textContent = (grade !== null && !isNaN(grade)) ? grade : '';
   currentRow.cells[4].textContent = (ec !== null && !isNaN(ec)) ? ec : '';
 
-  if (!isNaN(grade)) {
-    if (grade >= 5.5) {
+  const newGrade = parseFloat(currentRow.cells[3].textContent);
+  
+  if (!isNaN(newGrade)) {
+    const isSufficient = newGrade >= 5.5;
+
+    if (isSufficient && !wasSufficient) { 
+      ecTotal += ec; 
       currentRow.classList.add('grade-sufficient');
       currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
-    } else if (grade > 0 && grade < 5.5) {
+    } else if (!isSufficient && wasSufficient) { 
+      ecTotal -= previousEC; 
       currentRow.classList.add('grade-insufficient');
       currentRow.classList.remove('grade-sufficient', 'grade-incomplete');
+    } else if (isSufficient) {
+      currentRow.classList.add('grade-sufficient');
+      currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
     } else {
       currentRow.classList.add('grade-incomplete');
       currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
@@ -227,7 +239,9 @@ function updateCourseInTable(quarter, name, exams, grade, ec) {
   }
 
   updateCourseInStorage(name, quarter, exams, grade, ec);
+  updateProgressBar(); 
 }
+
 
 function saveCourseToStorage(quarter, name, exams, grade, ec) {
   const courses = JSON.parse(localStorage.getItem('courses')) || [];
