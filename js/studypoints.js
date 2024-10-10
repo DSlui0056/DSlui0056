@@ -59,28 +59,25 @@ function calculateECTotal() {
 
   tableRows.forEach((row) => {
     const cells = row.cells;
-
     if (cells.length >= 5) {
       const gradeCell = cells[3];
       const ecCell = cells[4];
 
-      if (gradeCell && ecCell) {
-        const grade = parseFloat(gradeCell.textContent);
-        const ec = parseFloat(ecCell.textContent.replace(',', '.'));
+      const grade = parseFloat(gradeCell.textContent);
+      const ec = parseFloat(ecCell.textContent.replace(',', '.'));
 
-        if (!isNaN(grade)) {
-          if (grade >= 5.5) {
-            ecTotal += ec;
-            row.classList.add('grade-sufficient');
-            row.classList.remove('grade-insufficient', 'grade-incomplete');
-          } else if (grade > 0 && grade < 5.5) {
-            row.classList.add('grade-insufficient');
-            row.classList.remove('grade-sufficient', 'grade-incomplete');
-          }
-        } else {
-          row.classList.add('grade-incomplete');
-          row.classList.remove('grade-sufficient', 'grade-insufficient');
+      if (!isNaN(grade)) {
+        if (grade >= 5.5) {
+          ecTotal += ec;
+          row.classList.add('grade-sufficient');
+          row.classList.remove('grade-insufficient', 'grade-incomplete');
+        } else if (grade > 0) {
+          row.classList.add('grade-insufficient');
+          row.classList.remove('grade-sufficient', 'grade-incomplete');
         }
+      } else {
+        row.classList.add('grade-incomplete');
+        row.classList.remove('grade-sufficient', 'grade-insufficient');
       }
     }
   });
@@ -186,10 +183,20 @@ function addNewCourseToTable(quarter, name, exams, grade, ec) {
 
   const deleteBtn = newRow.querySelector('.delete-btn');
   deleteBtn.addEventListener('click', () => {
+    const ecValue = parseFloat(newRow.cells[4].textContent) || 0; 
+    const wasSufficient = parseFloat(newRow.cells[3].textContent) >= 5.5; 
+
     tableBody.removeChild(newRow);
     removeCourseFromStorage(name);
+
+    if (wasSufficient) {
+      ecTotal -= ecValue; 
+    }
+
     calculateECTotal();
+    updateProgressBar();
   });
+
 
   const editBtn = newRow.querySelector('.edit-btn');
   editBtn.addEventListener('click', () => {
@@ -200,11 +207,14 @@ function addNewCourseToTable(quarter, name, exams, grade, ec) {
 
   tableBody.appendChild(newRow);
   saveCourseToStorage(quarter, name, exams, grade, ec);
+
+  calculateECTotal();
+  updateProgressBar();
 }
 
 function updateCourseInTable(quarter, name, exams, grade, ec) {
   const previousEC = parseFloat(currentRow.cells[4].textContent) || 0;
-  const wasSufficient = parseFloat(currentRow.cells[3].textContent) >= 5.5; 
+  const wasSufficient = parseFloat(currentRow.cells[3].textContent) >= 5.5;
 
   currentRow.cells[0].textContent = quarter;
   currentRow.cells[1].textContent = name;
@@ -214,34 +224,30 @@ function updateCourseInTable(quarter, name, exams, grade, ec) {
   currentRow.cells[4].textContent = (ec !== null && !isNaN(ec)) ? ec : '';
 
   const newGrade = parseFloat(currentRow.cells[3].textContent);
-  
-  if (!isNaN(newGrade)) {
-    const isSufficient = newGrade >= 5.5;
+  const isSufficient = !isNaN(newGrade) && newGrade >= 5.5;
 
-    if (isSufficient && !wasSufficient) { 
-      ecTotal += ec; 
-      currentRow.classList.add('grade-sufficient');
-      currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
-    } else if (!isSufficient && wasSufficient) { 
-      ecTotal -= previousEC; 
-      currentRow.classList.add('grade-insufficient');
-      currentRow.classList.remove('grade-sufficient', 'grade-incomplete');
-    } else if (isSufficient) {
-      currentRow.classList.add('grade-sufficient');
-      currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
-    } else {
-      currentRow.classList.add('grade-incomplete');
-      currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
-    }
+  if (isSufficient && !wasSufficient) {
+    ecTotal += ec;
+  } else if (!isSufficient && wasSufficient) {
+    ecTotal -= previousEC;
+  }
+
+  if (isSufficient) {
+    currentRow.classList.add('grade-sufficient');
+    currentRow.classList.remove('grade-insufficient', 'grade-incomplete');
+  } else if (newGrade > 0) {
+    currentRow.classList.add('grade-insufficient');
+    currentRow.classList.remove('grade-sufficient', 'grade-incomplete');
   } else {
     currentRow.classList.add('grade-incomplete');
     currentRow.classList.remove('grade-sufficient', 'grade-insufficient');
   }
 
   updateCourseInStorage(name, quarter, exams, grade, ec);
-  updateProgressBar(); 
-}
 
+  calculateECTotal();
+  updateProgressBar();
+}
 
 function saveCourseToStorage(quarter, name, exams, grade, ec) {
   const courses = JSON.parse(localStorage.getItem('courses')) || [];
