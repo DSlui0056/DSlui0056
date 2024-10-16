@@ -96,6 +96,7 @@ function updateProgressBar() {
   nbsaWarning.style.display = ecTotal < targetEC ? 'block' : 'none';
 }
 
+
 function setupCourseForm() {
   const addForm = document.getElementById('addCourseForm');
   const showFormBtn = document.getElementById('addCourseButton');
